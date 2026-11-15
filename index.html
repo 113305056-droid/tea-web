@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Collection | 個人茶葉收藏與沖泡圖鑑</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-stone-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-white font-serif font-bold text-sm">
+                    茶
+                </div>
+                <h1 class="text-xl font-bold tracking-wide text-stone-900">Tea Collection</h1>
+            </div>
+            <nav class="flex items-center space-x-6 text-sm font-medium text-stone-600">
+                <a href="#collection" class="hover:text-emerald-700 transition">茶葉圖鑑</a>
+                <a href="CLAUDE.md" target="_blank" class="px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 transition">CLAUDE.md</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="max-w-4xl mx-auto px-6 pt-16 pb-12 text-center">
+        <p class="text-xs font-semibold uppercase tracking-widest text-emerald-700 mb-3">Personal Tea Archive</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4 tracking-tight">紀錄每一杯茶的產地、風味與最佳沖泡比例</h2>
+        <p class="text-stone-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+            透過標準化的設計規範（CLAUDE.md）建構的個人茶葉圖鑑。每一次遇見喜歡的新茶葉，都能依循統一格式持續擴充屬於自己的品飲筆記。
+        </p>
+    </section>
+
+    <!-- Filter Buttons -->
+    <div class="max-w-6xl mx-auto px-6 mb-8 flex flex-wrap justify-center gap-2" id="filter-buttons">
+        <button onclick="filterTea('all')" class="filter-btn active px-4 py-1.5 rounded-full text-sm font-medium bg-stone-800 text-white transition">全部茶款</button>
+        <button onclick="filterTea('oolong')" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-white border border-stone-200 text-stone-600 hover:bg-stone-100 transition">烏龍茶</button>
+        <button onclick="filterTea('black')" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-white border border-stone-200 text-stone-600 hover:bg-stone-100 transition">紅茶</button>
+        <button onclick="filterTea('green')" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-white border border-stone-200 text-stone-600 hover:bg-stone-100 transition">綠茶</button>
+    </div>
+
+    <!-- Tea Collection Grid -->
+    <main id="collection" class="max-w-6xl mx-auto px-6 pb-20 flex-grow w-full">
+        <div id="tea-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Tea Card 1: 烏龍茶 -->
+            <article class="tea-card bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between" data-type="oolong">
+                <div>
+                    <div class="flex items-start justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-stone-900">四季春烏龍茶</h3>
+                        <span class="shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full border bg-amber-50 text-amber-800 border-amber-200">烏龍茶</span>
+                    </div>
+                    <p class="text-xs font-medium text-stone-500 mb-4 flex items-center gap-1.5">
+                        <span>📍 產地：臺灣・南投名間</span>
+                    </p>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                        帶有清揚的梔子花與玉蘭花香氣，茶湯金黃透亮。入口甘醇滑順、不苦不澀，尾韻帶有淡淡的清甜回甘，非常適合日常品飲。
+                    </p>
+                </div>
+
+                <!-- Brewing Parameters -->
+                <div class="pt-4 border-t border-stone-100">
+                    <p class="text-[11px] font-semibold uppercase tracking-wider text-stone-400 mb-2.5">沖泡參數</p>
+                    <div class="grid grid-cols-3 gap-2 bg-stone-50 rounded-xl p-3 text-center">
+                        <div>
+                            <span class="block text-[11px] text-stone-400">淹れ方・溫度</span>
+                            <span class="text-sm font-bold text-stone-800">熱泡 95°C</span>
+                        </div>
+                        <div class="border-x border-stone-200">
+                            <span class="block text-[11px] text-stone-400">蒸し時間</span>
+                            <span class="text-sm font-bold text-stone-800">60 秒</span>
+                        </div>
+                        <div>
+                            <span class="block text-[11px] text-stone-400">湯量</span>
+                            <span class="text-sm font-bold text-stone-800">250 ml</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tea Card 2: 紅茶 -->
+            <article class="tea-card bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between" data-type="black">
+                <div>
+                    <div class="flex items-start justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-stone-900">香草波本紅茶 (Îles des Vanilles)</h3>
+                        <span class="shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full border bg-rose-50 text-rose-800 border-rose-200">紅茶</span>
+                    </div>
+                    <p class="text-xs font-medium text-stone-500 mb-4 flex items-center gap-1.5">
+                        <span>📍 產地：法國調配・波本香草與紅茶基底</span>
+                    </p>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                        濃郁溫潤的波本香草甜香與厚實紅茶完美融合，香氣層次豐富且不甜膩。第一泡適合純飲感受香氣，第二泡加入鮮奶製成奶茶也極具風味。
+                    </p>
+                </div>
+
+                <!-- Brewing Parameters -->
+                <div class="pt-4 border-t border-stone-100">
+                    <p class="text-[11px] font-semibold uppercase tracking-wider text-stone-400 mb-2.5">沖泡參數</p>
+                    <div class="grid grid-cols-3 gap-2 bg-stone-50 rounded-xl p-3 text-center">
+                        <div>
+                            <span class="block text-[11px] text-stone-400">淹れ方・溫度</span>
+                            <span class="text-sm font-bold text-stone-800">熱泡 95°C</span>
+                        </div>
+                        <div class="border-x border-stone-200">
+                            <span class="block text-[11px] text-stone-400">蒸し時間</span>
+                            <span class="text-sm font-bold text-stone-800">3 分鐘</span>
+                        </div>
+                        <div>
+                            <span class="block text-[11px] text-stone-400">湯量</span>
+                            <span class="text-sm font-bold text-stone-800">300 ml</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tea Card 3: 綠茶 -->
+            <article class="tea-card bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between" data-type="green">
+                <div>
+                    <div class="flex items-start justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-stone-900">釜炒製玉綠茶</h3>
+                        <span class="shrink-0 text-xs font-semibold px-2.5 py-1 rounded-full border bg-emerald-50 text-emerald-800 border-emerald-200">綠茶</span>
+                    </div>
+                    <p class="text-xs font-medium text-stone-500 mb-4 flex items-center gap-1.5">
+                        <span>📍 產地：日本・九州（熊本・宮崎）</span>
+                    </p>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                        不同於一般蒸製煎茶，經高溫鐵釜炒製後帶有獨特的「釜香」（微焙炒堅果與焦糖香）。茶湯清澈明亮，苦澀味極低，口感清爽回甘。
+                    </p>
+                </div>
+
+                <!-- Brewing Parameters -->
+                <div class="pt-4 border-t border-stone-100">
+                    <p class="text-[11px] font-semibold uppercase tracking-wider text-stone-400 mb-2.5">沖泡參數</p>
+                    <div class="grid grid-cols-3 gap-2 bg-stone-50 rounded-xl p-3 text-center">
+                        <div>
+                            <span class="block text-[11px] text-stone-400">淹れ方・溫度</span>
+                            <span class="text-sm font-bold text-stone-800">溫熱 80°C</span>
+                        </div>
+                        <div class="border-x border-stone-200">
+                            <span class="block text-[11px] text-stone-400">蒸し時間</span>
+                            <span class="text-sm font-bold text-stone-800">45 秒</span>
+                        </div>
+                        <div>
+                            <span class="block text-[11px] text-stone-400">湯量</span>
+                            <span class="text-sm font-bold text-stone-800">200 ml</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-stone-200 py-6 text-center text-sm text-stone-400">
+        <p>&copy; 2026 Tea Collection. Built with AI & CLAUDE.md Architecture.</p>
+    </footer>
+
+    <!-- Filter Script -->
+    <script>
+        function filterTea(type) {
+            const cards = document.querySelectorAll('.tea-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-stone-800', 'text-white');
+                btn.classList.add('bg-white', 'text-stone-600', 'border', 'border-stone-200');
+            });
+            event.target.classList.remove('bg-white', 'text-stone-600', 'border', 'border-stone-200');
+            event.target.classList.add('bg-stone-800', 'text-white');
+
+            cards.forEach(card => {
+                if (type === 'all' || card.dataset.type === type) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
